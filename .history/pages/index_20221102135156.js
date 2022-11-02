@@ -131,7 +131,7 @@ export default function Home() {
           </div>
         </form>
 
-        <form onSubmit={HandleSubmit}>
+        <form>
           <h2>Login</h2>
           <div className="border-2 p-2 m-2">
             <div className="pb-4">
@@ -174,34 +174,6 @@ export default function Home() {
               >Login User</button>
           </div>
         </form>
-
-        <div className="relative">
-          <h2>User Logged in:</h2>
-          <div className="flow-root m-2 p-2">
-            {user?.email}
-            <button
-                onClick={logout}
-                className=" text-red-700
-                            hover:text-white
-                            border border-red-700
-                            hover:bg-red-800
-                            focus:ring-4
-                            focus:outline-none
-                            focus:ring-red-300
-                            font-medium
-                            rounded-lg
-                            text-sm
-                            px-5 py-2.5
-                            mr-2
-                            dark:border-red-500
-                            dark:text-red-500
-                            dark:hover:text-white
-                            dark:hover:bg-red-600
-                            dark:focus:ring-red-800
-                            "
-              >Logout</button>
-          </div>
-        </div>
       </div>
     </div>
   )

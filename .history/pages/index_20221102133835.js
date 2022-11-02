@@ -42,20 +42,6 @@ export default function Home() {
     }
   }
 
-  const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      console.log(user);
-    } catch(error){
-      console.log(error.message);
-    }
-  }
-
-  const logout = async () => {
-    await signOut(auth);
-    console.log("user logged out");
-  }
-
   const HandleSubmit = event => {
     console.log("handle submit ran");
     event.preventDefault();
@@ -108,6 +94,7 @@ export default function Home() {
                             "
                 onClick={HandleRegister}>Register User</button>
               <button
+                onClick={() => GoogleSignIn()}
                 className=" text-red-700
                             hover:text-white
                             border border-red-700
@@ -126,82 +113,10 @@ export default function Home() {
                             dark:hover:bg-red-600
                             dark:focus:ring-red-800
                             "
-                  onClick={() => GoogleSignIn()}>Log in with Google</button>
+                            >Log in with Google</button>
             </div>
           </div>
         </form>
-
-        <form onSubmit={HandleSubmit}>
-          <h2>Login</h2>
-          <div className="border-2 p-2 m-2">
-            <div className="pb-4">
-              <label>Email</label>
-              <input
-                placeholder="Email..."
-                onChange={(event) => {
-                  setLoginEmail(event.target.value)
-                }}
-                className="flow-root m-2 p-2"
-              />
-              <input
-                placeholder="Password..."
-                onChange={(event) => {
-                  setLoginPassword(event.target.value)
-                }}
-                className="flow-root m-2 p-2"
-              />
-            </div>
-            <button
-                onClick={login}
-                className=" text-red-700
-                            hover:text-white
-                            border border-red-700
-                            hover:bg-red-800
-                            focus:ring-4
-                            focus:outline-none
-                            focus:ring-red-300
-                            font-medium
-                            rounded-lg
-                            text-sm
-                            px-5 py-2.5
-                            mr-2
-                            dark:border-red-500
-                            dark:text-red-500
-                            dark:hover:text-white
-                            dark:hover:bg-red-600
-                            dark:focus:ring-red-800
-                            "
-              >Login User</button>
-          </div>
-        </form>
-
-        <div className="relative">
-          <h2>User Logged in:</h2>
-          <div className="flow-root m-2 p-2">
-            {user?.email}
-            <button
-                onClick={logout}
-                className=" text-red-700
-                            hover:text-white
-                            border border-red-700
-                            hover:bg-red-800
-                            focus:ring-4
-                            focus:outline-none
-                            focus:ring-red-300
-                            font-medium
-                            rounded-lg
-                            text-sm
-                            px-5 py-2.5
-                            mr-2
-                            dark:border-red-500
-                            dark:text-red-500
-                            dark:hover:text-white
-                            dark:hover:bg-red-600
-                            dark:focus:ring-red-800
-                            "
-              >Logout</button>
-          </div>
-        </div>
       </div>
     </div>
   )
